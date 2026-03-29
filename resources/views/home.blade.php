@@ -5,17 +5,64 @@
 
 
 <!-- HERO / Bilgilendirme -->
-<div class="hero-section text-white text-center p-5 mb-5 rounded">
-    <h1 class="display-4 fw-bold mb-3">Teknoloji Aksesuarlarında Kalite</h1>
-    <p class="lead mb-4">
-        Güvenilir markaların kulaklık, şarj aleti, powerbank ve kablolarını keşfedin.
-        Uzun ömürlü ve %100 orijinal ürünler. Hayatınızı kolaylaştıracak teknolojiyi burada bulabilirsiniz.
-    </p>
-    <a href="#" class="btn btn-gradient">Ürünleri Gör</a>
+<section class="hero-section text-white text-center py-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Teknoloji Aksesuarlarında Kalite</h1>
+    <p class="lead">Orijinal ürünler, hızlı kargo ve uygun fiyat</p>
+    <button class="btn btn-gradient mt-3">Alışverişe Başla</button>
+  </div>
+</section>
+
+<div class="bg-warning text-dark text-center py-2 fw-bold">
+🔥 500 TL üzeri ücretsiz kargo | Kapıda ödeme mevcut | Aynı gün kargo!
 </div>
 
-<div class="container mt-4">
-    <img src="{{ asset('anasayfa.jpg') }}" alt="Ana Sayfa Fotoğrafı" class="img-fluid">
+<div class="container-fluid p-0">
+  <img src="{{ asset('anasayfa.jpg') }}" class="w-100" style="max-height:400px; object-fit:cover;">
+</div>
+
+
+<div class="container my-5">
+  <div class="row text-center">
+    <div class="col-md-3">🚚 Hızlı Kargo</div>
+    <div class="col-md-3">🔒 Güvenli Ödeme</div>
+    <div class="col-md-3">🔄 Kolay İade</div>
+    <div class="col-md-3">⭐ %100 Orijinal</div>
+  </div>
+</div>
+
+
+<!-- Slider Kategoriler -->
+<h4 class="mb-3 text-center text-white">Kategoriler</h4>
+<div class="position-relative mb-5">
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <div class="category-card">🎧 Kulaklık</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="category-card">🔌 Şarj Aleti</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="category-card">🔋 Powerbank</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="category-card">🔗 Kablo</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="category-card">📱 Stand</div>
+            </div>
+             <div class="swiper-slide">
+                <div class="category-card">📱 Ekran Koruyucu</div>
+            </div>
+
+        </div>
+    </div>
+
+      <!-- Navigation -->
+    <div class="swiper-button-prev"><i class="fa-solid fa-chevron-left"></i></div>
+    <div class="swiper-button-next"><i class="fa-solid fa-chevron-right"></i></div>
 </div>
 
 <section class="premium-section my-5">
@@ -103,6 +150,7 @@
 
 .prev { left: 0; }
 .next { right: 0; }</style>
+
     <div class="container mb-4">
         <h2 class="premium-title">Ürünleri Yakından Tanıyın</h2>
     </div>
@@ -145,37 +193,15 @@
 
 </section>
 
-<!-- Slider Kategoriler -->
-<h4 class="mb-3 text-center text-white">Kategoriler</h4>
-<div class="position-relative mb-5">
-    <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
 
-            <div class="swiper-slide">
-                <div class="category-card">🎧 Kulaklık</div>
-            </div>
-            <div class="swiper-slide">
-                <div class="category-card">🔌 Şarj Aleti</div>
-            </div>
-            <div class="swiper-slide">
-                <div class="category-card">🔋 Powerbank</div>
-            </div>
-            <div class="swiper-slide">
-                <div class="category-card">🔗 Kablo</div>
-            </div>
-            <div class="swiper-slide">
-                <div class="category-card">📱 Stand</div>
-            </div>
-             <div class="swiper-slide">
-                <div class="category-card">📱 Ekran Koruyucu</div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Navigation -->
-    <div class="swiper-button-prev"><i class="fa-solid fa-chevron-left"></i></div>
-    <div class="swiper-button-next"><i class="fa-solid fa-chevron-right"></i></div>
+<div class="container my-5">
+  <div class="p-5 text-center rounded" style="background: linear-gradient(45deg,#000,#333);">
+    <h2 class="text-warning">Powerbanklerde %30 İndirim</h2>
+    <p>Kaçırılmayacak fırsatlar seni bekliyor</p>
+   <button class="btn btn-gradient" onclick="openCategory('Powerbank')">
+  Hemen İncele
+</button>
+  </div>
 </div>
 
 <!-- Popüler Ürünler -->
@@ -230,6 +256,106 @@
 
 </div>
 
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">🆕 Yeni Gelenler</h2>
+
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="featured-product p-4">
+          <img src="https://via.placeholder.com/500x350" class="img-fluid mb-3">
+          <h3>Yeni Nesil Powerbank</h3>
+          <p>Ultra hızlı şarj</p>
+          <h4 class="text-warning">999 TL</h4>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row">
+
+          <div class="col-6">
+            <div class="mini-product p-3 mb-3">
+              <img src="https://via.placeholder.com/200">
+              <h6>Kablo</h6>
+              <p class="text-warning">199 TL</p>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="mini-product p-3 mb-3">
+              <img src="https://via.placeholder.com/200">
+              <h6>Adaptör</h6>
+              <p class="text-warning">299 TL</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!--  LİSTE ÜRÜN (AMAZON TARZI) -->
+<section class="py-5" style="background:#1a1a1a;">
+
+</section>
+
+<section class="faq-section py-5">
+  <div class="container">
+    
+    <h2 class="text-center text-white mb-5">❓ Sık Sorulan Sorular</h2>
+
+    <div class="faq-box">
+
+      <!-- Soru -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>🚚 Kargo ne kadar sürede gelir?</span>
+          <i>+</i>
+        </div>
+        <div class="faq-answer">
+          Siparişleriniz 1-3 iş günü içerisinde teslim edilir.
+        </div>
+      </div>
+
+      <!-- Soru -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>🔒 Ürünler orijinal mi?</span>
+          <i>+</i>
+        </div>
+        <div class="faq-answer">
+          Tüm ürünlerimiz %100 orijinal ve garantilidir.
+        </div>
+      </div>
+
+      <!-- Soru -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>🔄 İade ve değişim var mı?</span>
+          <i>+</i>
+        </div>
+        <div class="faq-answer">
+          14 gün içerisinde kolay iade ve değişim yapabilirsiniz.
+        </div>
+      </div>
+
+      <!-- Soru -->
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>💳 Ödeme yöntemleri neler?</span>
+          <i>+</i>
+        </div>
+        <div class="faq-answer">
+          Kredi kartı, banka kartı ve kapıda ödeme seçenekleri mevcuttur.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 
 
@@ -284,5 +410,21 @@ function setActiveCard() {
 scroll.addEventListener("scroll", setActiveCard);
 window.addEventListener("load", setActiveCard);
 </script>
+<script>
+document.querySelectorAll(".faq-question").forEach(item => {
+    item.addEventListener("click", () => {
+        let parent = item.parentElement;
+
+        // diğerlerini kapat (premium his)
+        document.querySelectorAll(".faq-item").forEach(el => {
+            if (el !== parent) el.classList.remove("active");
+        });
+
+        parent.classList.toggle("active");
+    });
+});
+</script>
+
+
 
 @endsection
