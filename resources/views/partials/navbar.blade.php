@@ -437,6 +437,12 @@
     border-top: 1px solid #ddd;
     padding-top: 10px;
 }
+
+#paymentModal input {
+    border-radius: 8px;
+    padding: 10px;
+}
+
 </style>
  <div class="container">
     <a href="/" class="logo">ATİKO</a>
@@ -508,6 +514,29 @@
 
   </div>
 
+</div>
+
+<div id="paymentModal" class="custom-modal">
+  <div class="modal-white" style="max-width:400px;">
+
+    <span class="close-btn" onclick="closePayment()">×</span>
+
+    <h3 style="text-align:center; color:black;">💳 Kart Bilgileri</h3>
+
+    <input type="text" id="cardName" placeholder="Kart Sahibi" class="form-control mb-2">
+
+    <input type="text" id="cardNumber" placeholder="Kart Numarası (16 haneli)" class="form-control mb-2">
+
+    <div style="display:flex; gap:10px;">
+        <input type="text" id="cardDate" placeholder="AA/YY" class="form-control mb-2">
+        <input type="text" id="cardCvv" placeholder="CVV" class="form-control mb-2">
+    </div>
+
+    <button onclick="completePayment()" class="btn btn-success w-100 mt-2">
+        Ödemeyi Tamamla
+    </button>
+
+  </div>
 </div>
 
     <!-- BUTONLAR -->
@@ -725,25 +754,9 @@ function confirmCart() {
         return;
     }
 
-    fetch('/order-create', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-        },
-        body: JSON.stringify({
-            cart: cart
-        })
-    })
-    .then(res => res.json())
-    .then(data => {
-        alert("Sipariş oluşturuldu! Kod: " + data.order_code);
-
-        cart = [];
-        renderCart();
-        closeCart();
-    });
+    document.getElementById("paymentModal").style.display = "flex";
 }
+
 
 /* KAPAT */
 function closeCategory() {
@@ -794,5 +807,60 @@ function updateSummary() {
     document.getElementById("totalPrice").innerText = totalPrice + " TL";
     document.getElementById("cargoPrice").innerText = cargoText;
     document.getElementById("finalTotal").innerText = final + " TL";
+}
+
+function completePayment() {
+
+    let name = document.getElementById("cardName").value.trim();
+    let number = document.getElementById("cardNumber").value.trim();
+    let date = document.getElementById("cardDate").value.trim();
+    let cvv = document.getElementById("cardCvv").value.trim();
+
+    // 🔍 BASİT VALIDASYON
+    if (!name || !number || !date || !cvv) {
+        alert("Lütfen tüm alanları doldurun!");
+        return;
+    }
+
+    if (number.length !== 16 || isNaN(number)) {
+        alert("Kart numarası 16 haneli olmalı!");
+        return;
+    }
+
+    if (cvv.length !== 3 || isNaN(cvv)) {
+        alert("CVV 3 haneli olmalı!");
+        return;
+    }
+
+   
+    closePayment();
+
+    
+    sendOrderToServer();
+}
+
+function sendOrderToServer() {
+    fetch('/order-create', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: JSON.stringify({
+            cart: cart
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert("Sipariş oluşturuldu! Kod: " + data.order_code);
+
+        cart = [];
+        renderCart();
+        closeCart();
+    });
+}
+
+function closePayment() {
+    document.getElementById("paymentModal").style.display = "none";
 }
 </script>
