@@ -11,3 +11,5 @@ Route::post('/order', [OrderController::class, 'store']);
 Route::get('/order/{code}', [OrderController::class, 'show']);
 
 Route::post('/order-create', [OrderController::class, 'store']);
+
+Route::get('/orders', [OrderController::class, 'getOrders']);

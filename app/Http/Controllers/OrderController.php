@@ -36,4 +36,12 @@ class OrderController extends Controller
 
         return view('order', compact('order'));
     }
+
+    public function getOrders()
+{
+    $orders = Order::latest()->get();
+
+    return response()->json($orders);
+}
+
 }

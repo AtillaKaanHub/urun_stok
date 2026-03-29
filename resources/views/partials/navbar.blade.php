@@ -548,10 +548,25 @@
   </div>
 </div>
 
+<div id="ordersModal" class="custom-modal" style="display:none;">
+    <div class="modal-white">
+
+        <span class="close-btn" onclick="closeOrders()">×</span>
+
+        <h2>📦 Siparişlerim</h2>
+
+        <div id="ordersList">
+            Yükleniyor...
+        </div>
+
+    </div>
+</div>
+
 </li>
         <li><a href="/support">Destek</a></li>
         <li><a href="/about">Hakkımızda</a></li>
         <li class="user-actions">
+          <button onclick="openOrders()">Siparişlerim</button>
           <a href="/login" class="login-btn">Giriş</a>
          <a href="#" class="cart-btn" onclick="openCart(); return false;">Sepet</a>
         </li>
@@ -863,4 +878,54 @@ function sendOrderToServer() {
 function closePayment() {
     document.getElementById("paymentModal").style.display = "none";
 }
+
+function openOrders() {
+    document.getElementById("ordersModal").style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    fetchOrders();
+}
+
+function closeOrders() {
+    document.getElementById("ordersModal").style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+function loadOrders() {
+    fetch('/orders')
+    .then(res => res.json())
+    .then(data => {
+
+        const list = document.getElementById("ordersList");
+        list.innerHTML = "";
+
+        data.forEach(order => {
+
+            let itemsHTML = "";
+
+            order.items.forEach(item => {
+                itemsHTML += `<p>${item.name} - ${item.qty}</p>`;
+            });
+
+            list.innerHTML += `
+                <div>
+                    <h3>${order.order_code}</h3>
+                    <p>${order.total_price} TL</p>
+                    ${itemsHTML}
+                </div>
+            `;
+        });
+
+    });
+}
+
+function openOrders() {
+    document.getElementById("ordersModal").style.display = "flex";
+    loadOrders();
+}
+
+function closeOrders() {
+    document.getElementById("ordersModal").style.display = "none";
+}
+
 </script>
