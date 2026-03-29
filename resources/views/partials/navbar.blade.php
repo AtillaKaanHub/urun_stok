@@ -725,11 +725,24 @@ function confirmCart() {
         return;
     }
 
-    alert("Sipariş onaylandı!");
+    fetch('/order-create', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: JSON.stringify({
+            cart: cart
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert("Sipariş oluşturuldu! Kod: " + data.order_code);
 
-    cart = [];
-    renderCart();
-    closeCart();
+        cart = [];
+        renderCart();
+        closeCart();
+    });
 }
 
 /* KAPAT */
