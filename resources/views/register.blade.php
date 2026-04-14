@@ -4,81 +4,138 @@
 <meta charset="UTF-8">
 <title>Kayıt Ol</title>
 
+<link rel="icon" type="image/png" href="/images/logo.png">
+
 <style>
 body {
     margin: 0;
-    font-family: Arial;
+    font-family: 'Segoe UI', sans-serif;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg,#000,#333);
+
+    background: linear-gradient(135deg, #141414, #1f1f1f);
 }
 
-.register-box {
+/* KART */
+.login-box {
+    width: 360px;
+    padding: 35px;
+    border-radius: 16px;
+
     background: #fff;
-    padding: 30px;
-    width: 350px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+
     text-align: center;
 }
 
-.register-box h2 {
-    margin-bottom: 20px;
+/* BAŞLIK */
+.login-box h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
 }
 
-.register-box input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+/* FORM GRUP */
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
 }
 
-.register-box button {
-    width: 100%;
-    padding: 12px;
-    background: #27ae60;
-    border: none;
-    color: #fff;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.register-box button:hover {
-    background: #1e8449;
-}
-
-.register-box a {
+/* LABEL */
+.form-group label {
+    font-size: 14px;
+    color: #555;
     display: block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #333;
+    margin-bottom: 5px;
 }
 
-.register-box a:hover {
-    color: #27ae60;
+/* INPUT */
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #ff9800;
+    box-shadow: 0 0 0 2px rgba(255,152,0,0.2);
+}
+
+/* BUTON */
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: linear-gradient(45deg, #ff9800, #ff5722);
+    color: #fff;
+
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.login-box button:hover {
+    transform: scale(1.03);
+}
+
+/* ALT TEXT */
+.login-box a {
+    display: block;
+    margin-top: 15px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-box a:hover {
+    color: #ff9800;
+}
+
+/* HATA */
+.error {
+    margin-top: 10px;
+    color: red;
+    font-size: 14px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="register-box">
-    <h2>📝 Kayıt Ol</h2>
+<div class="login-box">
+    <h2> Kayıt Ol</h2>
 
     <form method="POST" action="/register">
         @csrf
 
-        <input type="text" name="name" placeholder="Ad Soyad" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Şifre" required>
+        <div class="form-group">
+            <label>Ad Soyad</label>
+            <input type="text" name="name" placeholder="Adınız Soyadınız" required>
+        </div>
 
-        <button type="submit">Kayıt Ol</button>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="ornek@mail.com" required>
+        </div>
+
+        <div class="form-group">
+            <label>Şifre</label>
+            <input type="password" name="password" placeholder="" required>
+        </div>
+
+       <button type="submit" class="main-btn">Kayıt Ol</button>
     </form>
 
     <a href="/login">Zaten hesabın var mı? Giriş yap</a>
+
 </div>
 
 </body>
