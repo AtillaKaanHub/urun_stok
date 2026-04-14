@@ -122,7 +122,7 @@ body {
         <div class="form-group">
             <label>Şifre</label>
             <input type="password" name="password" placeholder="••••••••" required>
-        </div>
+        </div> 
 
        <button type="submit" class="main-btn">Giriş Yap</button>
     </form>

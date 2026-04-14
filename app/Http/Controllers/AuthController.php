@@ -12,20 +12,26 @@ class AuthController extends Controller
         return view('login');
     }
 
-    public function login(Request $request) {
 
-        if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect('/');
-        }
-
-        return back()->with('error', 'Bilgiler yanlış!');
+   public function login(Request $request)
+{
+    $credentials = $request->only('email', 'password');
+      
+    if (Auth::attempt($credentials)) {
+        return redirect('/')->with('success', 'Giriş başarılı!');
     }
 
-    public function showRegister() {
-        return view('register');
-    }
+    return back()->with('error', 'Bilgiler yanlış!');
+}
+
 
     public function register(Request $request) {
+    
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|min:4'
+    ]);
 
         User::create([
             'name' => $request->name,
@@ -33,8 +39,13 @@ class AuthController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        return redirect('/login');
+         return redirect('/login')->with('success', 'Kayıt başarılı!');
     }
+
+    public function showRegister()
+{
+    return view('register');
+}
 
     public function logout() {
         Auth::logout();
