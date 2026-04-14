@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Giriş Yap</title>
+<title>Kayıt Ol</title>
 
 <style>
 body {
@@ -15,8 +15,7 @@ body {
     background: linear-gradient(45deg,#000,#333);
 }
 
-/* KART */
-.login-box {
+.register-box {
     background: #fff;
     padding: 30px;
     width: 350px;
@@ -25,75 +24,61 @@ body {
     text-align: center;
 }
 
-.login-box h2 {
+.register-box h2 {
     margin-bottom: 20px;
 }
 
-/* INPUT */
-.login-box input {
+.register-box input {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
     border-radius: 8px;
     border: 1px solid #ccc;
-    outline: none;
 }
 
-/* BUTON */
-.login-box button {
+.register-box button {
     width: 100%;
     padding: 12px;
-    background: #ff9800;
+    background: #27ae60;
     border: none;
     color: #fff;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
 }
 
-.login-box button:hover {
-    background: #e68900;
+.register-box button:hover {
+    background: #1e8449;
 }
 
-/* LINK */
-.login-box a {
+.register-box a {
     display: block;
     margin-top: 10px;
-    color: #333;
     text-decoration: none;
+    color: #333;
 }
 
-.login-box a:hover {
-    color: #ff9800;
-}
-
-/* HATA */
-.error {
-    color: red;
-    margin-top: 10px;
+.register-box a:hover {
+    color: #27ae60;
 }
 </style>
 </head>
 
 <body>
 
-<div class="login-box">
-    <h2>🔐 Giriş Yap</h2>
+<div class="register-box">
+    <h2>📝 Kayıt Ol</h2>
 
-    <form method="POST" action="/login">
+    <form method="POST" action="/register">
         @csrf
 
+        <input type="text" name="name" placeholder="Ad Soyad" required>
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Şifre" required>
 
-        <a href="/login" class="login-btn">Giriş</a>
+        <button type="submit">Kayıt Ol</button>
     </form>
 
-    <a href="/register">Hesabın yok mu? Kayıt ol</a>
-
-    @if(session('error'))
-        <div class="error">{{ session('error') }}</div>
-    @endif
+    <a href="/login">Zaten hesabın var mı? Giriş yap</a>
 </div>
 
 </body>

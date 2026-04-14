@@ -39,22 +39,22 @@
         <div class="swiper-wrapper">
 
             <div class="swiper-slide">
-                <div class="category-card">🎧 Kulaklık</div>
+                <div class="category-card" onclick="openCategory('Kulaklık')" >🎧 Kulaklık</div>
             </div>
             <div class="swiper-slide">
-                <div class="category-card">🔌 Şarj Aleti</div>
+                <div class="category-card" onclick="openCategory('Şarj Aleti')" >🔌 Şarj Aleti</div>
             </div>
             <div class="swiper-slide">
-                <div class="category-card">🔋 Powerbank</div>
+                <div class="category-card" onclick="openCategory('Powerbank')" >🔋 Powerbank</div>
             </div>
             <div class="swiper-slide">
-                <div class="category-card">🔗 Kablo</div>
+                <div class="category-card" onclick="openCategory('Kablo')" >🔗 Kablo</div>
             </div>
             <div class="swiper-slide">
-                <div class="category-card">📱 Stand</div>
+                <div class="category-card" onclick="openCategory('Stand')" >📱 Stand</div>
             </div>
              <div class="swiper-slide">
-                <div class="category-card">📱 Ekran Koruyucu</div>
+                <div class="category-card" onclick="openCategory('Ekran Koruyucu')" >📱 Ekran Koruyucu</div>
             </div>
 
         </div>
@@ -237,7 +237,7 @@
             <div class="p-3 text-center">
                 <h5>Bluetooth Kulaklık</h5>
                 <p>799 TL</p>
-                <button class="btn btn-gradient w-100">Sepete Ekle</button>
+              <button class="btn btn-gradient w-100">Sepete Ekle</button>
             </div>
         </div>
     </div>

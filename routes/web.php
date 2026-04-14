@@ -13,3 +13,8 @@ Route::get('/order/{code}', [OrderController::class, 'show']);
 Route::post('/order-create', [OrderController::class, 'store']);
 
 Route::get('/orders', [OrderController::class, 'getOrders']);
+
+/* GİRİŞ */
+Route::get('/login', function () {
+    return view('login');
+});

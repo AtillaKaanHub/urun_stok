@@ -169,8 +169,10 @@
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.5);
+     backdrop-filter: blur(6px);
     justify-content: center;
     align-items: center;
+    
 }
 
 /* BEYAZ PANEL */
@@ -194,33 +196,97 @@
     cursor: pointer;
 }
 
+/* BAŞLIK */
+.category-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
 /* GRID */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
-    margin-top: 20px;
 }
 
 /* KART */
 .product-card {
     position: relative;
-    border: 1px solid #eee;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 15px;
-    text-align: center;
     background: #fff;
     transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
+/* BADGE */
+.product-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ff9800;
+    color: #fff;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+}
+
+.product-badge.discount {
+    background: #e74c3c;
+}
+
+/* RESİM */
 .product-card img {
     width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* FİYAT */
+.price {
+    color: #ff9800;
+    font-weight: bold;
+    margin: 8px 0;
+    font-size: 18px;
+}
+
+/* BUTON */
+.add-cart-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: linear-gradient(45deg,#ff9800,#ff5722);
+    color: #fff;
     border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.add-cart-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ADET */
+
+.quantity-mini button {
+    width: 22px;
+    height: 22px;
+    border: none;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+}
+
+.quantity-mini input {
+    width: 30px;
+    text-align: center;
+    border: none;
 }
 
 /* SEPET BLOĞU */
@@ -267,21 +333,26 @@
     outline: none;
 }
 
-/* SEPET BUTONU */
-.add-cart-btn {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background: #ff9800;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 6px;
+/*  MODAL GELİŞTİRME  */
+
+
+
+/* BAŞLIK */
+.modal-white h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+/* KAPAT BUTONU */
+.close-btn {
     transition: 0.2s;
 }
 
-.add-cart-btn:hover {
-    background: #e68900;
+.close-btn:hover {
+    transform: rotate(90deg);
+    color: red;
 }
+
 
 /* ANİMASYON */
 @keyframes popup {
@@ -350,6 +421,7 @@
     border-radius: 10px;
     padding: 15px;
     text-align: center;
+    transition: 0.2s;
 }
 
 /* ADET KONTROL */
@@ -376,19 +448,6 @@
     margin: 0 5px;
 }
 
-.cart-item {
-    border: 1px solid #eee;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-}
-
-/* FİYAT */
-.price {
-    color: #ff9800;
-    font-weight: bold;
-    margin: 5px 0;
-}
 
 /* TOPLAM KUTUSU */
 #totalPrice {
@@ -457,12 +516,157 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     z-index: 999;
 }
+#cartModal .modal-white {
+    max-width: 900px;
+}
+
+.cart-item:hover {
+    transform: scale(1.03);
+}
+
+/* ÖZET KUTUSU */
+.summary-box {
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
 
 .kargo-btn:hover {
     background-color: #e6b800;
 }
 
+#paymentModal .modal-white {
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+/* INPUT */
+#paymentModal input {
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* BUTON */
+#paymentModal button {
+    background: linear-gradient(45deg,#27ae60,#2ecc71);
+    border: none;
+}
+
+/* SİPARİŞLERİM */
+/* ===== SİPARİŞLER MODAL ===== */
+
+.orders-modal {
+    max-width: 900px;
+}
+
+/* BAŞLIK */
+.orders-title {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+/* GRID */
+.orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+/* KART */
+.order-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    border: 1px solid #eee;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+}
+
+/* ÜST */
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/* KOD */
+.order-code {
+    font-weight: bold;
+    color: #333;
+}
+
+/* DURUM */
+.order-status {
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+    background: #ffeaa7;
+}
+
+/* ÜRÜNLER */
+.order-items {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+/* ALT */
+.order-footer {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+/* BOŞ DURUM */
+.loading {
+    text-align: center;
+    color: #999;
+}
+
+/* KARGO BUTONU */
+.kargo-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(45deg,#ff9800,#ff5722);
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.kargo-btn:hover {
+    transform: scale(1.05);
+}
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #333;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.3s;
+    z-index: 9999;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 </style>
+
  <div class="container">
     <a href="/" class="logo">ATİKO</a>
     <nav class="main-nav">
@@ -569,19 +773,20 @@
 </div>
 
 <div id="ordersModal" class="custom-modal" style="display:none;">
-    <div class="modal-white">
-        
+    
+    <div class="modal-white orders-modal">
 
         <span class="close-btn" onclick="closeOrders()">×</span>
 
-        <h2>📦 Siparişlerim</h2>
+        <h2 class="orders-title">📦 Siparişlerim</h2>
 
-        <div id="ordersList">
-            Yükleniyor...
+        <div id="ordersList" class="orders-grid">
+            <p class="loading">Yükleniyor...</p>
         </div>
 
     </div>
-     <button class="kargo-btn" onclick="kargoTakip()"> Kargo Takip</button>
+
+    <button class="kargo-btn" onclick="kargoTakip()"> Kargo Takip</button>
 
 </div>
 
@@ -607,6 +812,7 @@
 
   </div>
 </div>
+<div id="toast" class="toast"></div>
 </header>
 
 <script>
@@ -706,7 +912,7 @@ function addToCart(name, price, index) {
         cart.push({ name: name, price: price, qty: qty });
     }
 
-    alert(name + " sepete eklendi");
+     showToast(name + " sepete eklendi");
     updateSummary();
 }
 
@@ -777,18 +983,23 @@ function setQty(index, value) {
     updateSummary();
 }
 
-/* SEPET SİL */
 function clearCart() {
-    if (confirm("Sepeti silmek istiyor musun?")) {
-        cart = [];
-        renderCart();
+
+    if (cart.length === 0) {
+        showToast("Sepet zaten boş!", "error");
+        return;
     }
+
+    cart = [];
+    renderCart();
+
+    showToast("Sepet silindi", "success");
 }
 
-/* SEPET ONAYLA */
 function confirmCart() {
+
     if (cart.length === 0) {
-        alert("Sepet boş!");
+        showToast("Sepet boş!", "error");
         return;
     }
 
@@ -854,7 +1065,7 @@ function completePayment() {
     let date = document.getElementById("cardDate").value.trim();
     let cvv = document.getElementById("cardCvv").value.trim();
 
-    // 🔍 BASİT VALIDASYON
+    //  BASİT VALIDASYON
     if (!name || !number || !date || !cvv) {
         alert("Lütfen tüm alanları doldurun!");
         return;
@@ -890,7 +1101,7 @@ function sendOrderToServer() {
     })
     .then(res => res.json())
     .then(data => {
-        alert("Sipariş oluşturuldu! Kod: " + data.order_code);
+       showToast("Sipariş oluşturuldu! Kod: " + data.order_code, "success");
 
         cart = [];
         renderCart();
@@ -956,4 +1167,13 @@ function kargoTakip() {
     window.open("https://www.dhlecommerce.com.tr/gonderitakip", "_blank");
 }
 
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.innerText = message;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
+}
 </script>
