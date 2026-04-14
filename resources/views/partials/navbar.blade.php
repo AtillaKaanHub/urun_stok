@@ -443,6 +443,25 @@
     padding: 10px;
 }
 
+.kargo-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffcc00;
+    color: #000;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.kargo-btn:hover {
+    background-color: #e6b800;
+}
+
 </style>
  <div class="container">
     <a href="/" class="logo">ATİKO</a>
@@ -463,6 +482,7 @@
 <!-- MODAL -->
 <div id="categoryModal" class="custom-modal">
   <div class="modal-white">
+    
     
     <span class="close-btn" onclick="closeCategory()">×</span>
 
@@ -550,6 +570,7 @@
 
 <div id="ordersModal" class="custom-modal" style="display:none;">
     <div class="modal-white">
+        
 
         <span class="close-btn" onclick="closeOrders()">×</span>
 
@@ -560,6 +581,8 @@
         </div>
 
     </div>
+     <button class="kargo-btn" onclick="kargoTakip()"> Kargo Takip</button>
+
 </div>
 
 </li>
@@ -926,6 +949,11 @@ function openOrders() {
 
 function closeOrders() {
     document.getElementById("ordersModal").style.display = "none";
+}
+
+
+function kargoTakip() {
+    window.open("https://www.dhlecommerce.com.tr/gonderitakip", "_blank");
 }
 
 </script>
