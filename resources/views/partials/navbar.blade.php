@@ -665,6 +665,76 @@
     transform: translateY(0);
 }
 
+/*HAKKIMIZDA*/
+/* ÖZEL MODAL */
+.about-modal-box {
+    background: linear-gradient(135deg,#ffffff,#f7f7f7);
+    width: 80%;
+    max-width: 900px;
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    animation: popup 0.4s ease;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+/* HEADER */
+.about-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.about-header h2 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.about-header p {
+    color: #777;
+}
+
+/* GRID */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+}
+
+/* KART */
+.about-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.about-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* FEATURES */
+.about-features {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.feature {
+    background: linear-gradient(45deg,#ff9800,#ff5722);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.feature:hover {
+    transform: scale(1.1);
+}
 </style>
 
  <div class="container">
@@ -792,7 +862,7 @@
 
 </li>
         <li><a href="/support">Destek</a></li>
-        <li><a href="/about">Hakkımızda</a></li>
+        <li><a href="#" onclick="openAbout()">Hakkımızda</a></li>
         <li class="user-actions">
           <button onclick="openOrders()">Siparişlerim</button>
           <a href="/login" class="login-btn">Giriş</a>
@@ -813,6 +883,46 @@
   </div>
 </div>
 <div id="toast" class="toast"></div>
+
+ <!-- hakkımızda -->
+<div id="aboutModal" class="custom-modal">
+  <div class="about-modal-box">
+
+    <span class="close-btn" onclick="closeAbout()">×</span>
+
+    <div class="about-header">
+        <h2>TechShop</h2>
+        <p>Teknolojiyi en hızlı şekilde sana ulaştırıyoruz</p>
+    </div>
+
+    <div class="about-grid">
+
+        <div class="about-card">
+            <h3>👨‍💻 Biz Kimiz?</h3>
+            <p>TechShop, teknoloji ürünlerini uygun fiyatlarla sunan modern bir platformdur.</p>
+        </div>
+
+        <div class="about-card">
+            <h3>🎯 Misyon</h3>
+            <p>Kullanıcı dostu, hızlı ve güvenilir alışveriş deneyimi sunmak.</p>
+        </div>
+
+        <div class="about-card">
+            <h3>🚀 Vizyon</h3>
+            <p>Türkiye'nin en güvenilir teknoloji mağazası olmak.</p>
+        </div>
+
+    </div>
+
+    <div class="about-features">
+        <div class="feature">⚡ Hızlı Teslimat</div>
+        <div class="feature">🔒 Güvenli Ödeme</div>
+        <div class="feature">💬 7/24 Destek</div>
+    </div>
+
+  </div>
+</div>
+
 </header>
 
 <script>
@@ -1176,4 +1286,15 @@ function showToast(message) {
         toast.classList.remove("show");
     }, 2000);
 }
+
+/*HAKKIMIZDA*/
+function openAbout() {
+    document.getElementById("aboutModal").style.display = "flex";
+}
+
+function closeAbout() {
+    document.getElementById("aboutModal").style.display = "none";
+}
+
+
 </script>

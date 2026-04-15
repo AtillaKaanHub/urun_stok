@@ -12,12 +12,13 @@ class AuthController extends Controller
         return view('login');
     }
 
-
-   public function login(Request $request)
+public function login(Request $request)
 {
     $credentials = $request->only('email', 'password');
-      
+
     if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+
         return redirect('/')->with('success', 'Giriş başarılı!');
     }
 
@@ -25,22 +26,22 @@ class AuthController extends Controller
 }
 
 
-    public function register(Request $request) {
-    
+  public function register(Request $request)
+{
     $request->validate([
         'name' => 'required',
         'email' => 'required|email|unique:users',
         'password' => 'required|min:4'
     ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+    User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password)
+    ]);
 
-         return redirect('/login')->with('success', 'Kayıt başarılı!');
-    }
+    return redirect('/login')->with('success', 'Kayıt başarılı!');
+}
 
     public function showRegister()
 {
